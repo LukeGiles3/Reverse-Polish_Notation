@@ -63,6 +63,7 @@ class LinkedList {
                 if (current.data.id == id) {
                     previous.next = current.next;
                     current = current.next;
+                    this.size--;
                     break
                 } else {
                     previous = current;
@@ -70,8 +71,31 @@ class LinkedList {
                 }
             }
         }
-
     }
+    //marios example
+    // remove(id) {
+    //     if(this.head == null) {
+    //         if(this.head.data.id == id) {
+    //             this.head = this.head.next;
+    //         }
+    //         else {
+    //             let previous = this.head
+    //             let current = this.head.next;
+
+    //             while(current != null) {
+    //                 if(current.data.id == id) {
+    //                     previous.next = current.next;
+    //                     this.size--;
+    //                     break
+    //                 }
+    //                 else {
+    //                     previous = current;
+    //                     current = current.next;
+    //                 }
+    //             }
+    //         }
+    //     }
+    // }
     toString() {
 
     }
@@ -91,4 +115,7 @@ pets.insert(bird)
 pets.insert(fish)
 
 pets.contains('cat')
+pets.remove('bird');
+console.log(pets.contains('bird'))
+
 
