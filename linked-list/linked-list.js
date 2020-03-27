@@ -22,14 +22,14 @@ class LinkedList {
     insert(data) {
         const newNode = new LinkedListNode(data);
 
-        if(this.head == null) {
+        if (this.head == null) {
             this.head = newNode;
             this.size++;
         }
         else {
             let current = this.head;
 
-            while(current.next != null) {
+            while (current.next != null) {
                 current = current.next;
             }
 
@@ -40,33 +40,37 @@ class LinkedList {
     contains(id) {
         let current = this.head;
 
-        if(current == null) {
+        if (current == null) {
             return false;
         }
 
-        while(current != null) {
-            if(current.data.id == id) {
+        while (current != null) {
+            if (current.data.id == id) {
                 return true;
             }
             current = current.next;
         }
         return false;
     }
-    remove(Id) {
-        let previous = this.head;
-        let current = this.head.next;
+    remove(id) {
+        if (this.head.data == id) {
+            this.head = this.head.next
+        } else {
+            let previous = this.head;
+            let current = previous.next;
 
-        if(current == null) {
-            return false;
-        }
-
-        while(current != null) {
-            if(current.data.id == id) {
-
+            while (current) {
+                if (current.data.id == id) {
+                    previous.next = current.next;
+                    current = current.next;
+                    break
+                } else {
+                    previous = current;
+                    current = current.next
+                }
             }
-            current = current.next;
         }
-        return false;
+
     }
     toString() {
 
@@ -75,10 +79,10 @@ class LinkedList {
 
 const pets = new LinkedList();
 
-const cat = {id: 'cat', name: 'izzy'}
-const dog = {id: 'dog', name: 'spark'}
-const bird = {id: 'bird', name: 'tweety'}
-const fish = {id: 'fish', name: 'ruby'}
+const cat = { id: 'cat', name: 'izzy' }
+const dog = { id: 'dog', name: 'spark' }
+const bird = { id: 'bird', name: 'tweety' }
+const fish = { id: 'fish', name: 'ruby' }
 
 
 pets.insert(cat)
